@@ -1,0 +1,6 @@
+This is a placeholder file.
+
+To use your actual resume:
+1. Save your resume as 'resume.pdf'
+2. Place it in the /public directory
+3. The website will automatically display it on the Resume page
