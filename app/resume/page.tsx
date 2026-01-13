@@ -1,7 +1,8 @@
+import { profile } from '@/src/content/profile';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Resume - Kyle Zhao',
+  title: `Resume — ${profile.name}`,
   description: 'View and download my resume',
 };
 
@@ -17,17 +18,18 @@ export default function ResumePage() {
       <div className="mb-8 p-6 border border-[var(--border)] rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Key Highlights</h2>
         <ul className="space-y-2 text-[var(--muted)]">
-          <li>• Data Science & Software Engineering Student</li>
-          <li>• Experience with full-stack development and machine learning</li>
-          <li>• Proficient in Python, TypeScript, React, and modern web technologies</li>
-          <li>• Strong problem-solving skills and passion for building impactful solutions</li>
+          <li>• {profile.bio.split('\n')[0]}</li>
+          <li>• {profile.bio.split('\n')[1]}</li>
+          {profile.interests.slice(0, 3).map((interest) => (
+            <li key={interest}>• {interest}</li>
+          ))}
         </ul>
       </div>
 
       {/* Download Button */}
       <div className="mb-8">
         <a
-          href="/resume.pdf"
+          href={profile.links.resumePdf}
           download
           className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-medium rounded-lg hover:opacity-90 transition-opacity"
         >
@@ -48,20 +50,11 @@ export default function ResumePage() {
 
       {/* PDF Viewer */}
       <div className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--border)]">
-        <div className="aspect-[8.5/11] w-full flex items-center justify-center text-[var(--muted)]">
-          <div className="text-center p-8">
-            <p className="mb-2">PDF Viewer Placeholder</p>
-            <p className="text-sm">
-              Add your resume.pdf file to the /public directory to display it here
-            </p>
-          </div>
-        </div>
-        {/* Uncomment when you have a PDF file */}
-        {/* <iframe
-          src="/resume.pdf"
+        <iframe
+          src={profile.links.resumePdf}
           className="w-full h-[800px]"
           title="Resume PDF"
-        /> */}
+        />
       </div>
     </div>
   );

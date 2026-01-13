@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { profile } from '@/src/content/profile';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -7,10 +8,10 @@ export default function Footer() {
     <footer className="border-t border-[var(--border)] mt-auto">
       <div className="max-w-4xl mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--muted)]">
-          <p>© {currentYear} Kyle Zhao. All rights reserved.</p>
+          <p>© {currentYear} {profile.name}. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link
-              href="https://github.com"
+              href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"
@@ -19,7 +20,7 @@ export default function Footer() {
               GitHub
             </Link>
             <Link
-              href="https://linkedin.com"
+              href={profile.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"

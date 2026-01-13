@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { profile } from '@/src/content/profile';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -24,7 +25,7 @@ export default function Navigation() {
             href="/"
             className="text-xl font-semibold tracking-tight hover:opacity-70 transition-opacity"
           >
-            Kyle Zhao
+            {profile.name}
           </Link>
 
           {/* Desktop Navigation */}

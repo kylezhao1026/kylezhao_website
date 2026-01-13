@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import TerminalLoader from '@/components/TerminalLoader';
+import { profile } from '@/src/content/profile';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Kyle Zhao - Data Science & Software Engineering',
-  description: 'Personal website of Kyle Zhao - Data Science & Software Engineering Student',
+  title: `${profile.name} — Data Science & AI Student`,
+  description: profile.tagline,
 };
 
 export default function RootLayout({

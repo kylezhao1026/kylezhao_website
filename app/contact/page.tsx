@@ -1,12 +1,19 @@
 import Link from 'next/link';
+import { profile } from '@/src/content/profile';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact - Kyle Zhao',
+  title: `Contact — ${profile.name}`,
   description: 'Get in touch with me',
 };
 
 export default function ContactPage() {
+  // Extract GitHub username from URL
+  const githubUsername = profile.links.github.split('github.com/')[1] || 'kylezhao1026';
+
+  // Extract LinkedIn profile from URL
+  const linkedinProfile = profile.links.linkedin.split('linkedin.com/in/')[1] || 'profile';
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
       <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
@@ -33,10 +40,10 @@ export default function ContactPage() {
           </div>
           <h2 className="text-xl font-semibold mb-2">Email</h2>
           <Link
-            href="mailto:your.email@example.com"
+            href={`mailto:${profile.links.email}`}
             className="text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors"
           >
-            your.email@example.com
+            {profile.links.email}
           </Link>
         </div>
 
@@ -52,12 +59,12 @@ export default function ContactPage() {
           </div>
           <h2 className="text-xl font-semibold mb-2">GitHub</h2>
           <Link
-            href="https://github.com/yourusername"
+            href={profile.links.github}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors"
           >
-            @yourusername
+            @{githubUsername}
           </Link>
         </div>
 
@@ -73,12 +80,12 @@ export default function ContactPage() {
           </div>
           <h2 className="text-xl font-semibold mb-2">LinkedIn</h2>
           <Link
-            href="https://linkedin.com/in/yourprofile"
+            href={profile.links.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors"
           >
-            /in/yourprofile
+            /in/{linkedinProfile}
           </Link>
         </div>
       </div>
