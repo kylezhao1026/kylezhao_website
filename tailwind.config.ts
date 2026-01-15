@@ -10,17 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         background: 'var(--background)',
+        surface: 'var(--surface)',
+        'surface-hover': 'var(--surface-hover)',
         foreground: 'var(--foreground)',
-        accent: 'var(--accent)',
-        primary: 'var(--primary)',
-        muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
-        },
+        muted: 'var(--muted)',
         border: 'var(--border)',
+        'border-bright': 'var(--border-bright)',
+        accent: 'var(--accent)',
+        'accent-hover': 'var(--accent-hover)',
+        prompt: 'var(--prompt)',
+        comment: 'var(--comment)',
+        success: 'var(--success)',
+        warning: 'var(--warning)',
       },
       fontFamily: {
-        sans: ['var(--font-geist-sans)'],
+        mono: ['JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', 'Liberation Mono', 'Menlo', 'monospace'],
       },
     },
   },

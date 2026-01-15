@@ -95,18 +95,18 @@ export default function TerminalLoader() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0a0a0a] transition-opacity duration-[600ms] ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-[600ms] ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       aria-live="polite"
       aria-busy={loaderState === 'typing'}
     >
-      <div className="terminal-window rounded-lg bg-[#1a1a1a] p-8 shadow-2xl border border-[#2a2a2a]">
-        <div className="flex items-center font-mono text-base md:text-lg">
-          <span className="text-[#4ade80] mr-2">&gt;</span>
-          <span className="text-[#e5e5e5]">{displayedText}</span>
+      <div className="terminal-window rounded-md bg-surface p-8 shadow-2xl border border-border">
+        <div className="flex items-center font-mono text-sm md:text-base">
+          <span className="text-prompt mr-2">$</span>
+          <span className="text-foreground">{displayedText}</span>
           <span
-            className={`inline-block w-2 h-5 bg-[#4ade80] ml-1 ${
+            className={`inline-block w-2 h-4 bg-prompt ml-1 ${
               prefersReducedMotion ? '' : 'animate-cursor-blink'
             }`}
             aria-hidden="true"

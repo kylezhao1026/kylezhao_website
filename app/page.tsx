@@ -1,77 +1,97 @@
-import Link from 'next/link';
 import { profile } from '@/src/content/profile';
+import PromptText from '@/components/terminal/PromptText';
+import CommentText from '@/components/terminal/CommentText';
+import TerminalPanel from '@/components/terminal/TerminalPanel';
+import CommandLink from '@/components/terminal/CommandLink';
+import TechPill from '@/components/terminal/TechPill';
+import TerminalHeading from '@/components/terminal/TerminalHeading';
 
 export default function Home() {
-  // Get first 2 paragraphs of bio
-  const bioLines = profile.bio.split('\n\n');
-  const shortBio = bioLines.slice(0, 2).join('\n\n');
+  const bioLines = profile.bio.split('\n');
+  const shortBio = bioLines.slice(0, 2).join(' ');
 
-  // Get featured projects (max 3)
   const featuredProjects = profile.projects
     .filter((p) => p.featured)
     .slice(0, 3);
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-12">
       {/* Hero Section */}
-      <section className="mb-24">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-balance">
-          {profile.name}
-        </h1>
-        <p className="text-xl md:text-2xl text-[var(--muted)] mb-8 max-w-2xl">
-          {profile.tagline}
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            href="/projects"
-            className="px-6 py-3 bg-foreground text-background font-medium rounded-lg hover:opacity-90 transition-opacity"
-          >
-            View Projects
-          </Link>
-          <Link
-            href="/contact"
-            className="px-6 py-3 border border-[var(--border)] font-medium rounded-lg hover:bg-[var(--border)] transition-colors"
-          >
-            Contact
-          </Link>
+      <section className="space-y-4">
+        <TerminalHeading level={1}>{profile.name}</TerminalHeading>
+        <PromptText symbol=">">
+          <span className="text-base md:text-lg text-muted">{profile.tagline}</span>
+        </PromptText>
+      </section>
+
+      {/* Bio Section */}
+      <section className="space-y-3">
+        <PromptText symbol="$">whoami</PromptText>
+        <div className="pl-4 border-l-2 border-border text-sm md:text-base leading-relaxed text-muted">
+          {shortBio}
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="mb-24">
-        <h2 className="text-3xl font-bold mb-6">About</h2>
-        <p className="text-lg text-[var(--muted)] leading-relaxed max-w-2xl whitespace-pre-line">
-          {shortBio}
-        </p>
+      {/* Skills Section */}
+      <section className="space-y-3">
+        <PromptText symbol="$">skills --list</PromptText>
+        <TerminalPanel>
+          <div className="space-y-3 text-sm">
+            <div>
+              <CommentText>languages</CommentText>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {profile.skills.languages.map((lang) => (
+                  <TechPill key={lang} tech={lang} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <CommentText>frameworks</CommentText>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {profile.skills.frameworks.map((fw) => (
+                  <TechPill key={fw} tech={fw} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <CommentText>tools</CommentText>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {profile.skills.tools.map((tool) => (
+                  <TechPill key={tool} tech={tool} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </TerminalPanel>
       </section>
 
-      {/* Featured Projects Section */}
+      {/* Featured Projects */}
       {featuredProjects.length > 0 && (
-        <section>
-          <h2 className="text-3xl font-bold mb-6">Featured Projects</h2>
-          <div className="grid md:grid-cols-1 gap-8">
+        <section className="space-y-3">
+          <PromptText symbol="$">ls ~/projects --featured</PromptText>
+          <div className="space-y-4">
             {featuredProjects.map((project) => (
-              <div
-                key={project.slug}
-                className="border border-[var(--border)] rounded-lg p-6 hover:bg-[var(--border)] transition-colors"
-              >
-                <h3 className="font-semibold text-xl mb-3">{project.title}</h3>
-                <p className="text-[var(--muted)] mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-3 py-1 bg-foreground/10 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+              <TerminalPanel key={project.slug} hover>
+                <div className="space-y-3">
+                  <h3 className="text-base font-semibold">{project.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <TechPill key={tech} tech={tech} />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </TerminalPanel>
             ))}
           </div>
         </section>
       )}
+
+      {/* CTA Commands */}
+      <section className="flex flex-wrap gap-3 pt-4">
+        <CommandLink href="/projects">cd ~/projects</CommandLink>
+        <CommandLink href="/contact">mail --to kyle</CommandLink>
+      </section>
     </div>
   );
 }
