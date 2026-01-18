@@ -16,19 +16,19 @@ export default function ContactPage() {
   const linkedinProfile = profile.links.linkedin.split('linkedin.com/in/')[1]?.replace('/', '') || 'profile';
 
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-16 space-y-10">
       {/* Header */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <TerminalHeading level={1}>Contact</TerminalHeading>
         <CommentText>open to internships, collaborations, and conversations</CommentText>
       </section>
 
       {/* Contact Info */}
-      <section className="space-y-4">
+      <section className="space-y-5">
         <PromptText symbol="$">cat contact.info</PromptText>
 
         <TerminalPanel>
-          <div className="space-y-4 text-sm">
+          <div className="space-y-5">
             {/* Email */}
             <div>
               <CommentText>email</CommentText>

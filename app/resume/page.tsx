@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-16 space-y-10">
       {/* Header */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <TerminalHeading level={1}>Resume</TerminalHeading>
         <CommentText>experience, education, and skills</CommentText>
       </section>
 
       {/* Download Command */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <PromptText symbol="$">cat resume.pdf</PromptText>
         <div className="flex gap-3">
           <CommandLink href={profile.links.resumePdf} external>

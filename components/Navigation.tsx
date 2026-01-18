@@ -35,14 +35,14 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 flex-wrap">
+          <div className="hidden md:flex items-center gap-6 flex-wrap">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors hover:text-accent px-2 py-1 ${
+                className={`text-base transition-colors hover:text-accent px-2 py-1 ${
                   pathname === link.href
-                    ? 'text-foreground underline decoration-prompt underline-offset-4'
+                    ? 'text-foreground font-medium underline decoration-prompt decoration-2 underline-offset-4'
                     : 'text-muted'
                 }`}
                 title={link.command}

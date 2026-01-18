@@ -43,6 +43,25 @@ as a camp counselor and self-employed tennis coach.
 
   projects: [
     {
+      slug: "lol-adc-gold-analysis",
+      title: "League of Legends Esports: ADC Gold Lead Impact Analysis",
+      description:
+        "Statistical analysis of professional League of Legends match data to determine whether ADC players with gold advantages at 15 minutes significantly impact win probability. Collaborative UCSD DSC 80 project analyzing 10,000+ competitive matches from Oracle's Elixir dataset.",
+      impactBullets: [
+        "Analyzed 150,000 rows of professional esports data using hypothesis testing and permutation tests (p < 0.001)",
+        "Built Random Forest classification model achieving 75% accuracy with feature engineering and GridSearchCV tuning",
+        "Demonstrated teams with ADC gold leads achieve 65-70% win rates through statistical analysis",
+        "Validated model fairness across game scenarios using permutation testing (p = 0.156)",
+      ],
+      tech: ["Python", "Pandas", "Scikit-learn", "Random Forest", "Hypothesis Testing", "Plotly"],
+      links: {
+        github: "https://github.com/philip-chen6/LOL-analysis",
+        demo: "https://philip-chen6.github.io/LOL-analysis/",
+      },
+      featured: true,
+    },
+
+    {
       slug: "friends-reboot-analysis",
       title: 'Utilizing Pandas to Analyze "Friends" for a Reboot',
       description:
@@ -57,7 +76,7 @@ as a camp counselor and self-employed tennis coach.
         github: undefined,
         demo: undefined,
       },
-      featured: true,
+      featured: false,
     },
 
     {
@@ -75,7 +94,7 @@ as a camp counselor and self-employed tennis coach.
         github: undefined,
         demo: undefined,
       },
-      featured: true,
+      featured: false,
     },
 
     {

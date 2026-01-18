@@ -15,28 +15,28 @@ export default function Home() {
     .slice(0, 3);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-12">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-16 space-y-16">
       {/* Hero Section */}
-      <section className="space-y-4">
+      <section className="space-y-5">
         <TerminalHeading level={1}>{profile.name}</TerminalHeading>
         <PromptText symbol=">">
-          <span className="text-base md:text-lg text-muted">{profile.tagline}</span>
+          <span className="text-base md:text-lg text-muted leading-relaxed">{profile.tagline}</span>
         </PromptText>
       </section>
 
       {/* Bio Section */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <PromptText symbol="$">whoami</PromptText>
-        <div className="pl-4 border-l-2 border-border text-sm md:text-base leading-relaxed text-muted">
+        <div className="pl-5 border-l-2 border-border leading-relaxed text-muted">
           {shortBio}
         </div>
       </section>
 
       {/* Skills Section */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <PromptText symbol="$">skills --list</PromptText>
         <TerminalPanel>
-          <div className="space-y-3 text-sm">
+          <div className="space-y-4">
             <div>
               <CommentText>languages</CommentText>
               <div className="flex flex-wrap gap-2 mt-2">
@@ -67,14 +67,14 @@ export default function Home() {
 
       {/* Featured Projects */}
       {featuredProjects.length > 0 && (
-        <section className="space-y-3">
+        <section className="space-y-4">
           <PromptText symbol="$">ls ~/projects --featured</PromptText>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {featuredProjects.map((project) => (
               <TerminalPanel key={project.slug} hover>
-                <div className="space-y-3">
-                  <h3 className="text-base font-semibold">{project.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{project.description}</p>
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold leading-tight">{project.title}</h3>
+                  <p className="text-muted leading-relaxed">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <TechPill key={tech} tech={tech} />

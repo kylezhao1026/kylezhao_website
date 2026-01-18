@@ -19,9 +19,9 @@ export default function ProjectsPage() {
   });
 
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-16 space-y-10">
       {/* Header */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <TerminalHeading level={1}>Projects</TerminalHeading>
         <CommentText>selected work in data science & machine learning</CommentText>
       </section>
@@ -44,13 +44,13 @@ export default function ProjectsPage() {
               </div>
 
               {/* Description */}
-              <p className="text-sm text-muted leading-relaxed">{project.description}</p>
+              <p className="text-muted leading-relaxed">{project.description}</p>
 
               {/* Impact Bullets */}
               {project.impactBullets && project.impactBullets.length > 0 && (
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <CommentText>key outcomes</CommentText>
-                  <ul className="text-xs text-muted space-y-1 pl-4">
+                  <ul className="text-sm text-muted space-y-1.5 pl-4">
                     {project.impactBullets.map((bullet, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="text-prompt shrink-0">›</span>
