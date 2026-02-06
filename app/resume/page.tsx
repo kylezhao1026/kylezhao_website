@@ -1,9 +1,6 @@
 import { profile } from '@/src/content/profile';
 import type { Metadata } from 'next';
-import PromptText from '@/components/terminal/PromptText';
-import CommentText from '@/components/terminal/CommentText';
-import CommandLink from '@/components/terminal/CommandLink';
-import TerminalHeading from '@/components/terminal/TerminalHeading';
+import FlashBackButton from '@/components/FlashBackButton';
 
 export const metadata: Metadata = {
   title: `Resume — ${profile.name}`,
@@ -12,31 +9,19 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-16 space-y-10">
-      {/* Header */}
-      <section className="space-y-4">
-        <TerminalHeading level={1}>Resume</TerminalHeading>
-        <CommentText>experience, education, and skills</CommentText>
-      </section>
+    <div className="min-h-screen px-6 py-16 md:py-20 max-w-4xl mx-auto space-y-10">
+      <FlashBackButton />
+      <div className="space-y-4">
+        <h1 className="text-2xl md:text-3xl font-medium tracking-tight">here is my current resume / cv</h1>
+      </div>
 
-      {/* Download Command */}
-      <section className="space-y-4">
-        <PromptText symbol="$">cat resume.pdf</PromptText>
-        <div className="flex gap-3">
-          <CommandLink href={profile.links.resumePdf} external>
-            download resume.pdf
-          </CommandLink>
-        </div>
-      </section>
-
-      {/* PDF Viewer */}
-      <section className="border border-border rounded-md overflow-hidden bg-surface">
+      <div className="border border-[var(--border)] rounded-2xl overflow-hidden bg-[var(--surface)]">
         <iframe
           src={profile.links.resumePdf}
-          className="w-full h-[600px] md:h-[800px]"
+          className="w-full h-[560px] md:h-[720px]"
           title="Resume PDF"
         />
-      </section>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,4 @@
 import type { Metadata } from 'next';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import TerminalLoader from '@/components/TerminalLoader';
 import { profile } from '@/src/content/profile';
 import './globals.css';
 
@@ -24,11 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen">
-        <TerminalLoader />
-        <Navigation />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+        <main>{children}</main>
       </body>
     </html>
   );

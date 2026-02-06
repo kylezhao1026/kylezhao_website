@@ -1,97 +1,90 @@
-import { profile } from '@/src/content/profile';
-import PromptText from '@/components/terminal/PromptText';
-import CommentText from '@/components/terminal/CommentText';
-import TerminalPanel from '@/components/terminal/TerminalPanel';
-import CommandLink from '@/components/terminal/CommandLink';
-import TechPill from '@/components/terminal/TechPill';
-import TerminalHeading from '@/components/terminal/TerminalHeading';
+'use client';
+
+import { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+type Bubble = {
+  label: string;
+  href: string;
+  icon: string;
+  size: number;
+  angle: number;
+};
 
 export default function Home() {
-  const bioLines = profile.bio.split('\n');
-  const shortBio = bioLines.slice(0, 2).join(' ');
+  const router = useRouter();
+  const [flash, setFlash] = useState<{ x: number; y: number } | null>(null);
 
-  const featuredProjects = profile.projects
-    .filter((p) => p.featured)
-    .slice(0, 3);
+  const bubbles = useMemo<Bubble[]>(
+    () => [
+      { label: 'about', href: '/about', icon: '/icons/about.png', size: 86, angle: 45 },
+      { label: 'projects', href: '/projects', icon: '/icons/project.png', size: 86, angle: 135 },
+      { label: 'resume', href: '/resume', icon: '/icons/resume.png', size: 86, angle: 225 },
+      { label: 'contact', href: '/contact', icon: '/icons/contact.png', size: 86, angle: 315 },
+    ],
+    [],
+  );
+
+  const handleBubbleClick = (event: React.MouseEvent<HTMLButtonElement>, href: string) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setFlash({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+    window.setTimeout(() => router.push(href), 420);
+  };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-16 space-y-16">
-      {/* Hero Section */}
-      <section className="space-y-5">
-        <TerminalHeading level={1}>{profile.name}</TerminalHeading>
-        <PromptText symbol=">">
-          <span className="text-base md:text-lg text-muted leading-relaxed">{profile.tagline}</span>
-        </PromptText>
-      </section>
-
-      {/* Bio Section */}
-      <section className="space-y-4">
-        <PromptText symbol="$">whoami</PromptText>
-        <div className="pl-5 border-l-2 border-border leading-relaxed text-muted">
-          {shortBio}
+    <div className="min-h-screen center-stack px-6">
+      <div className="relative bubble-ring">
+        <div className="absolute inset-0 z-10">
+          {bubbles.map((bubble, index) => (
+            <div
+              key={bubble.href}
+              className="absolute left-1/2 top-1/2"
+              style={{
+                transform: `translate(-50%, -50%) rotate(${bubble.angle}deg) translate(var(--ring-radius))`,
+              }}
+            >
+              <button
+                type="button"
+                aria-label={bubble.label}
+                title={bubble.label}
+                onClick={(event) => handleBubbleClick(event, bubble.href)}
+                className="bubble"
+                style={{
+                  width: bubble.size,
+                  height: bubble.size,
+                  animationDelay: `${index * 90}ms`,
+                }}
+              >
+                <img
+                  src={bubble.icon}
+                  alt=""
+                  className="w-full h-full object-contain"
+                  style={{ transform: `rotate(${-bubble.angle}deg)` }}
+                  draggable={false}
+                />
+              </button>
+            </div>
+          ))}
         </div>
-      </section>
+        <div className="absolute left-2 top-6 md:left-3 md:top-8 pointer-events-none">
+          <span className="text-sm md:text-base tracking-wide text-[var(--muted)]">hi im</span>
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <h1 className="text-6xl md:text-7xl tracking-tight text-[#1b1b1b]">kyle zhao</h1>
+        </div>
+      </div>
 
-      {/* Skills Section */}
-      <section className="space-y-4">
-        <PromptText symbol="$">skills --list</PromptText>
-        <TerminalPanel>
-          <div className="space-y-4">
-            <div>
-              <CommentText>languages</CommentText>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {profile.skills.languages.map((lang) => (
-                  <TechPill key={lang} tech={lang} />
-                ))}
-              </div>
-            </div>
-            <div>
-              <CommentText>frameworks</CommentText>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {profile.skills.frameworks.map((fw) => (
-                  <TechPill key={fw} tech={fw} />
-                ))}
-              </div>
-            </div>
-            <div>
-              <CommentText>tools</CommentText>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {profile.skills.tools.map((tool) => (
-                  <TechPill key={tool} tech={tool} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </TerminalPanel>
-      </section>
-
-      {/* Featured Projects */}
-      {featuredProjects.length > 0 && (
-        <section className="space-y-4">
-          <PromptText symbol="$">ls ~/projects --featured</PromptText>
-          <div className="space-y-5">
-            {featuredProjects.map((project) => (
-              <TerminalPanel key={project.slug} hover>
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold leading-tight">{project.title}</h3>
-                  <p className="text-muted leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <TechPill key={tech} tech={tech} />
-                    ))}
-                  </div>
-                </div>
-              </TerminalPanel>
-            ))}
-          </div>
-        </section>
+      {flash && (
+        <div
+          className="flash-overlay flash-anim"
+          style={
+            {
+              '--flash-x': `${flash.x}px`,
+              '--flash-y': `${flash.y}px`,
+            } as React.CSSProperties
+          }
+        />
       )}
-
-      {/* CTA Commands */}
-      <section className="flex flex-wrap gap-3 pt-4">
-        <CommandLink href="/projects">cd ~/projects</CommandLink>
-        <CommandLink href="/contact">mail --to kyle</CommandLink>
-      </section>
     </div>
   );
 }
