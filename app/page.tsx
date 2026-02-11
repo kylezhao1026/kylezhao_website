@@ -17,10 +17,10 @@ export default function Home() {
 
   const bubbles = useMemo<Bubble[]>(
     () => [
-      { label: 'about', href: '/about', icon: '/icons/about.png', size: 86, angle: 45 },
-      { label: 'projects', href: '/projects', icon: '/icons/project.png', size: 86, angle: 135 },
-      { label: 'resume', href: '/resume', icon: '/icons/resume.png', size: 86, angle: 225 },
-      { label: 'contact', href: '/contact', icon: '/icons/contact.png', size: 86, angle: 315 },
+      { label: 'about', href: '/about', icon: '/icons/about.png', size: 172, angle: 45 },
+      { label: 'projects', href: '/projects', icon: '/icons/project.png', size: 172, angle: 135 },
+      { label: 'resume', href: '/resume', icon: '/icons/resume.png', size: 172, angle: 225 },
+      { label: 'contact', href: '/contact', icon: '/icons/contact.png', size: 172, angle: 315 },
     ],
     [],
   );
@@ -38,9 +38,10 @@ export default function Home() {
           {bubbles.map((bubble, index) => (
             <div
               key={bubble.href}
-              className="absolute left-1/2 top-1/2"
+              className="absolute left-1/2 top-1/2 bubble-orbit bubble-enter"
               style={{
-                transform: `translate(-50%, -50%) rotate(${bubble.angle}deg) translate(var(--ring-radius))`,
+                ['--angle' as string]: `${bubble.angle}deg`,
+                animationDelay: `${index * 90}ms`,
               }}
             >
               <button
@@ -52,7 +53,6 @@ export default function Home() {
                 style={{
                   width: bubble.size,
                   height: bubble.size,
-                  animationDelay: `${index * 90}ms`,
                 }}
               >
                 <img
@@ -66,8 +66,8 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="absolute left-2 top-6 md:left-3 md:top-8 pointer-events-none">
-          <span className="text-sm md:text-base tracking-wide text-[var(--muted)]">hi im</span>
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 pointer-events-none">
+          <span className="text-3xl md:text-4xl tracking-wide text-[var(--muted)]">hi im</span>
         </div>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <h1 className="text-6xl md:text-7xl tracking-tight text-[#1b1b1b]">kyle zhao</h1>
