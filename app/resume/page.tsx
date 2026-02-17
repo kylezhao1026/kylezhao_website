@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import FlashBackButton from '@/components/FlashBackButton';
 
 export const metadata: Metadata = {
-  title: `Resume — ${profile.name}`,
+  title: 'resume - kyle',
   description: 'View and download my resume',
 };
 

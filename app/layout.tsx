@@ -3,7 +3,10 @@ import { profile } from '@/src/content/profile';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: `${profile.name} — Data Science & AI Student`,
+  title: {
+    default: 'kyle zhao',
+    template: '%s',
+  },
   description: profile.tagline,
   icons: {
     icon: [{ url: '/fav_icon.png', type: 'image/png' }],
