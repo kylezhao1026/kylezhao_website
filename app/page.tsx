@@ -44,76 +44,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── ABOUT ────────────────────────────────────────────────────── */}
-      <section id="about" className="py-28 px-6 max-w-3xl mx-auto">
-        <SectionHeading>about</SectionHeading>
-
-        <div className="space-y-5 text-[var(--foreground)] leading-relaxed text-[15px]">
-          <p>Hello! I&apos;m Kyle!</p>
-          <p>
-            I&apos;m a second-year studying data science at the University of California, San Diego.
-            My coursework revolves around data analysis and statistics, but I like learning about
-            many things outside of data science including but not limited to: nutrition, human
-            psychology, kinesiology, entrepreneurship, software engineering, and environmental
-            sciences.
-          </p>
-          <p>
-            I was born and raised in Princeton, New Jersey, but for now I am studying in San Diego,
-            California. In the future, I envision myself operating out of a city like San Francisco
-            or New York.
-          </p>
-          <p>
-            In my free time, I like to work out at the gym, cook nutritious food, make social media
-            content, play table tennis, and vibe-code! I&apos;m always willing to try out new
-            things, so this list may grow in the future!
-          </p>
-          <p>
-            I&apos;m currently looking for ways to expand my breadth of knowledge and experience
-            through research and internships, so please feel free to reach out if you have any
-            related opportunities!
-          </p>
-        </div>
-
-        {/* Skills */}
-        <div className="mt-10 pt-8 border-t border-[var(--border)] space-y-4">
-          <p className="text-xs tracking-[0.3em] uppercase text-[var(--muted)]">skills</p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              ...profile.skills.languages,
-              ...profile.skills.frameworks,
-              ...profile.skills.tools,
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="text-xs tracking-wide px-3 py-1 rounded-full border border-[var(--border-bright)] text-[var(--muted)]"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Minnie photo */}
-        <div className="mt-10 space-y-3">
-          <p className="text-[15px] text-[var(--foreground)] leading-relaxed">
-            Back at home, I have a golden-doodle called Minnie — always &quot;hungry.&quot;
-          </p>
-          <div
-            className="rounded-2xl overflow-hidden border border-[var(--border-bright)]"
-            style={{ maxWidth: 480 }}
-          >
-            <Image
-              src="/images/minnie.jpeg"
-              alt="Kyle with Minnie"
-              width={1242}
-              height={1143}
-              className="w-full object-cover"
-              draggable={false}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* ─── PROJECTS ─────────────────────────────────────────────────── */}
       <section id="projects" className="py-28 px-6 max-w-4xl mx-auto">
         <SectionHeading>projects</SectionHeading>
@@ -239,6 +169,74 @@ export default function Home() {
         <div className="mt-12 pt-6 border-t border-[var(--border)] text-xs uppercase tracking-[0.25em] text-[var(--muted)] space-y-1">
           <div>typical response time: 24–48 hours</div>
           <div>for urgent matters: reach out via linkedin</div>
+        </div>
+      </section>
+
+      {/* ─── ABOUT ────────────────────────────────────────────────────── */}
+      <section id="about" className="py-28 px-6 max-w-3xl mx-auto">
+        <SectionHeading>about me</SectionHeading>
+
+        <div className="space-y-5 text-[var(--foreground)] leading-relaxed text-[15px]">
+          <p>Hello! I&apos;m Kyle!</p>
+          <p>
+            I&apos;m a second-year studying data science at the University of California, San Diego.
+            My coursework revolves around data analysis and statistics, but I like learning about
+            many things outside of data science including but not limited to: nutrition, human
+            psychology, kinesiology, entrepreneurship, software engineering, and environmental
+            sciences.
+          </p>
+          <p>
+            I was born and raised in Princeton, New Jersey, but for now I am studying in San Diego,
+            California. In the future, I envision myself operating out of a city like San Francisco
+            or New York.
+          </p>
+          <p>
+            In my free time, I like to work out at the gym, cook nutritious food, make social media
+            content, play table tennis, and vibe-code! I&apos;m always willing to try out new
+            things, so this list may grow in the future!
+          </p>
+          <p>
+            I&apos;m currently looking for ways to expand my breadth of knowledge and experience
+            through research and internships, so please feel free to reach out if you have any
+            related opportunities!
+          </p>
+        </div>
+
+        <div className="mt-10 pt-8 border-t border-[var(--border)] space-y-4">
+          <p className="text-xs tracking-[0.3em] uppercase text-[var(--muted)]">skills</p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              ...profile.skills.languages,
+              ...profile.skills.frameworks,
+              ...profile.skills.tools,
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="text-xs tracking-wide px-3 py-1 rounded-full border border-[var(--border-bright)] text-[var(--muted)]"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 space-y-3">
+          <p className="text-[15px] text-[var(--foreground)] leading-relaxed">
+            Back at home, I have a golden-doodle called Minnie — always &quot;hungry.&quot;
+          </p>
+          <div
+            className="rounded-2xl overflow-hidden border border-[var(--border-bright)]"
+            style={{ maxWidth: 480 }}
+          >
+            <Image
+              src="/images/minnie.jpeg"
+              alt="Kyle with Minnie"
+              width={1242}
+              height={1143}
+              className="w-full object-cover"
+              draggable={false}
+            />
+          </div>
         </div>
       </section>
 
