@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { profile } from '@/src/content/profile';
 import TerminalLoader from '@/components/TerminalLoader';
 import HeroSceneWrapper from '@/components/three/HeroSceneWrapper';
@@ -101,9 +102,11 @@ export default function Home() {
             className="rounded-2xl overflow-hidden border border-[var(--border-bright)]"
             style={{ maxWidth: 480 }}
           >
-            <img
+            <Image
               src="/images/minnie.jpeg"
               alt="Kyle with Minnie"
+              width={1242}
+              height={1143}
               className="w-full object-cover"
               draggable={false}
             />

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import FlashBackButton from '@/components/FlashBackButton';
 
 export const metadata: Metadata = {
@@ -48,12 +50,12 @@ export default function AboutPage() {
           style={{ background: 'rgba(168,85,247,0.06)' }}
         >
           <span className="text-sm text-[var(--muted)]">want to get in touch?</span>
-          <a
+          <Link
             href="/contact"
             className="text-sm text-[var(--accent)] hover:text-[var(--foreground)] transition-colors underline underline-offset-4"
           >
             contact ↗
-          </a>
+          </Link>
         </div>
 
         {/* Dog photo */}
@@ -63,9 +65,11 @@ export default function AboutPage() {
             one word to describe her, it would be &quot;hungry.&quot; Here&apos;s a picture of us!
           </p>
           <div className="rounded-2xl overflow-hidden border border-[var(--border-bright)]" style={{ maxWidth: 520 }}>
-            <img
+            <Image
               src="/images/minnie.jpeg"
               alt="Kyle with Minnie"
+              width={1242}
+              height={1143}
               className="w-full object-cover"
               draggable={false}
             />

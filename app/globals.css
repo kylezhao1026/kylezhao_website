@@ -8,6 +8,7 @@ html {
 }
 
 :root {
+  --font-playfair: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
   --background: #f5f0e8;
   --surface: #ede8dc;
   --surface-hover: #e6dfd0;

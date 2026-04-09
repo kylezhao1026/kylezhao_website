@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
@@ -32,21 +33,21 @@ export default function Navigation() {
       }
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a
+        <Link
           href="/#hero"
           className="text-sm font-mono tracking-wider text-[var(--foreground)] hover:text-[var(--accent)] transition-colors duration-200"
         >
           kyle zhao
-        </a>
+        </Link>
         <div className="flex items-center gap-7">
           {NAV_LINKS.map(({ label, href }) => (
-            <a
+            <Link
               key={label}
               href={href}
               className="text-xs tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--foreground)] transition-colors duration-200"
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
