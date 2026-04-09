@@ -24,6 +24,7 @@ const config: Config = {
         warning: 'var(--warning)',
       },
       fontFamily: {
+        serif: ['var(--font-playfair)', 'Georgia', 'Times New Roman', 'serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', 'Liberation Mono', 'Menlo', 'monospace'],
       },
     },

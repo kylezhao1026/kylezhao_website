@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 // ============ TIMING CONSTANTS (ADJUST THESE) ============
-const FULL_TEXT = 'loading cool website';
+const FULL_TEXT = 'initializing starfield';
 const TYPING_SPEED = 60; // ms per character
 const MIN_VISIBLE_TIME = 1000; // minimum time loader stays visible
 const PAUSE_AFTER_TYPING = 500; // pause after typing before fade

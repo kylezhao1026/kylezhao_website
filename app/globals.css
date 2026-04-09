@@ -2,13 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 :root {
-  --background: #f8f7f3;
-  --surface: #ffffff;
-  --foreground: #1b1b1b;
-  --muted: #6f6f6f;
-  --border: #e6e4dd;
-  --accent: #1b1b1b;
+  --background: #f5f0e8;
+  --surface: #ede8dc;
+  --surface-hover: #e6dfd0;
+  --foreground: #1c1711;
+  --muted: #7a6e5e;
+  --border: #d4c9b4;
+  --border-bright: #bfb09a;
+  --accent: #b45309;
+  --prompt: #92400e;
+  --comment: #9c8a72;
 }
 
 body {
@@ -59,12 +68,25 @@ body {
   outline-offset: 4px;
 }
 
+.glow-text {
+  text-shadow: 0 0 30px rgba(180, 83, 9, 0.25), 0 0 60px rgba(180, 83, 9, 0.1);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(180, 83, 9, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .flash-overlay {
   position: fixed;
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  background: #ffffff;
+  background: radial-gradient(circle, #b45309 0%, #f5f0e8 70%);
   transform: translate(-50%, -50%) scale(0.2);
   left: var(--flash-x);
   top: var(--flash-y);

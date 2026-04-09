@@ -23,8 +23,9 @@ export default function FlashBackButton({ href = '/', label = 'back' }: FlashBac
       <button
         type="button"
         onClick={handleClick}
-        className="text-sm uppercase tracking-[0.3em] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+        className="text-sm uppercase tracking-[0.3em] text-[var(--muted)] hover:text-[var(--accent)] transition-colors flex items-center gap-2 group"
       >
+        <span className="group-hover:text-[var(--accent)] transition-colors">←</span>
         {label}
       </button>
       {flash && (
